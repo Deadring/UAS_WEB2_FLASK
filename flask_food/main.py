@@ -125,9 +125,9 @@ def predict():
             nutrition_status = "Kurang Sehat"
         
         # Kategori kesehatan simple (Sehat / Tidak Sehat)
-        # Makanan dianggap Sehat jika health_score >= 60
-        is_healthy = health_score >= 60
-        health_category = "Sehat" if is_healthy else "Tidak Sehat"
+        # Makanan dianggap Sehat jika total energi <= 1000, Tidak Sehat jika > 1000
+        is_healthy = energy_from_macros >= 1000
+        health_category = "Tidak Sehat" if is_healthy else "Sehat"
         
         # Return hasil perhitungan
         return jsonify({
